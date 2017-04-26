@@ -1,12 +1,18 @@
 
 %% Delete input, begin and end when inserting into main.
 \input{../LaTeXTemplate/header}
+\usepackage{indentfirst}
 
 \begin{document}
+\ProjTitle{ECEN 776: Final Project}{Equalizer Comparison for Observation Models}{Mitchell Burnett}
+\section{Introduction}
 
-\begin{center}
-	\includegraphics[width=.65\columnwidth]{img/zero_forcing_ber.eps}
-\end{center}
+In this project, we were asked to explore the performance of the maximum likelihood sequence estimator (MLSE), the zero-forcing (ZF) equalizer, the minimum mean-squared error (MMSE) equalizer, and the decision-feedback (DF) equalizer for the Ungerboeck observation model, the Forney observation model, and the pulse shape matched filter observation model (PSMF). By the end of this report, for the given channel and each of the four equalizers, I will answer the question:  What is the "best" observation model for each equalizer?
+
+\section{Observation Models}
+Throughout this class, we have been studying various models for digital and wireless communications.  For example, we first examined a signal with additive white gaussian noise known as AWGN. We then examined and developed theory for correcting phase and timing errors in communication systems. In each case the model became increasingly more complex, however we did not include any other constraints on our system. In other words, we had assumed that we were using an ideal channel.
+
+In general, channels will not have an ideal frequency response. To allow for other constraints we abstract the channel into a linear time-invariant system as a lowpass equivalent to a bandpass process. By doing this, we now represent the channel as having an arbitrary frequency response $C(f)$ for a specified bandwidth, $W$. The response of this channel is zero outside this bandwidth. A side effect
 
 \end{document}
 
