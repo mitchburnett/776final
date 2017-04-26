@@ -1,0 +1,210 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+%\documentclass{article}
+
+\topmargin=-0.45in      
+\evensidemargin=0in     
+\oddsidemargin=0in      
+\textwidth=6.5in        
+\textheight=9.0in       
+\headsep=0.25in
+
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{arydshln}
+
+\usepackage{epstopdf}
+\usepackage[table]{xcolor}
+
+\usepackage{xspace}
+
+\usepackage{fancyhdr}
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+\pagestyle{fancy}
+\cfoot{\thepage}
+
+\newenvironment{Problem}[1][1.1]{\rhead{#1}\par\noindent\textbf{Problem
+#1}\vspace{-6pt}\newline\rule{\columnwidth}{1pt}\newline}
+{\vspace{-4pt}\newline\rule{\columnwidth}{1pt}\vspace{10pt}}
+
+\newenvironment{Section}[1][1.1]{\rhead{#1}\par\noindent\textbf{Section
+#1}\vspace{-6pt}\newline\rule{\columnwidth}{1pt}\newline}
+{\vspace{-4pt}\newline\rule{\columnwidth}{1pt}\vspace{10pt}}
+
+\newcommand{\HWTitle}[3]{ \lhead{#2}\chead{#3} \begin{center} \rule{300pt}{2pt} \\ \LARGE Homework #1
+\\ \large #2 \\ \vspace{-4pt} \rule{100pt}{1pt} \\ \vspace{1pt} \normalsize #3
+\\ \today \\ \rule{300pt}{2pt} \end{center}}
+
+\newcommand{\ProjTitle}[3]{\lhead{#2}\chead{#3} \begin{center} \rule{300pt}{2pt} \\ \LARGE Project #1
+\\ \large #2 \\ \vspace{-4pt} \rule{100pt}{1pt} \\ \vspace{1pt} \normalsize #3
+\\ \today \\ \rule{300pt}{2pt} \end{center}}
+
+\newcommand{\MyTitle}[3]{\lhead{#2}\chead{#3} \begin{center} \rule{300pt}{2pt} \\ \LARGE #1
+\\ \large #2 \\ \vspace{-4pt} \rule{100pt}{1pt} \\ \vspace{1pt} \normalsize #3
+\\ \today \\ \rule{300pt}{2pt} \end{center}}
+
+\newenvironment{Part}[1]{\textbf{Part #1}\begin{quote}}{\end{quote}}
+
+\newenvironment{Code}{\begin{quote}\textbf{Code
+Segment}\newline\rule{400pt}{1pt}\begin{alltt}}{\end{alltt}\rule{400pt}{1pt}\end{quote}}
+
+\newcommand{\Solution}{\noindent\textbf{Solution}\\}
+
+\newcommand{\Real}{\Re\text{e}}
+\newcommand{\Imag}{\Im\text{m}}
+
+\newcommand{\dB}{\text{dB}}
+\newcommand{\dBm}{\text{dBm}}
+\newcommand{\CRB}{Cram\'{e}r-Rao Bound\xspace}
+\newcommand{\Hz}{\text{ Hz}}
+\newcommand{\KHz}{\text{ KHz}}
+\newcommand{\MHz}{\text{ MHz}}
+\newcommand{\GHz}{\text{ GHz}}
+\newcommand{\rad}{\text{ radians}}
+\newcommand{\sinc}{\text{sinc}}
+\newcommand{\rect}{\text{rect}}
+\newcommand{\keV}{\text{ keV}}
+\newcommand{\eV}{\text{ eV}}
+
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\p}{^\prime}
+\newcommand{\curl}{\nabla \times}
+\renewcommand{\div}{\nabla \cdot}
+\newcommand{\w}{\omega}
+\newcommand{\xhat}{\hat{x}}
+
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\Rx}{\mathbf{R}_x}
+\newcommand{\wvec}{\mathbf{w}}
+\newcommand{\rvec}{\mathbf{r}}
+\newcommand{\xvec}{\mathbf{x}}
+\newcommand{\avec}{\mathbf{a}}
+
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\Pmat}{\mathbf{P}}
+\newcommand{\Q}{\mathbf{Q}}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+% 777 matrix and commands
+% If the command will mostly be used in a math environment do not add the '$' in the command 
+
+%% Wiener filter commands
+\newcommand{\FIRW}[1]{\sum_{#1=0}^{p-1}w(#1)x(n-#1)}
+\newcommand{\FIRWstar}[1]{\sum_{#1=0}^{p-1}w^*(#1)x^*(n-#1)}
+\newcommand{\error}{e(n) = d(n) - \hat{d}(n)}
+\newcommand{\MSE}{\zeta = E[e(n)e^*(n)]}
+\newcommand{\dw}{\frac{\partial}{\partial w^*(n)}}
+\newcommand{\dwvec}{\frac{\partial}{\partial \mathbf{w}^H(k)}}
+
+\newcommand{\W}{\begin{bmatrix}
+				   w(0)\\ w(1) \\ w(2) \\ \vdots \\ w(p-1)
+				\end{bmatrix}}
+
+%%%%
+\newcommand{\AL}[1]{\begin{align*}#1\end{align*}}
+
+\newcommand{\da}{\frac{\partial}{\partial a_p^*(k)}}
+\newcommand{\dhk}{\frac{\partial}{\partial h^*(k)}}
+
+\newcommand{\inv}[1]{#1^{-1}(n)}
+
+\newcommand{\conv}[4]{\sum_{k=#3}^{#4}#1(k)#2(n-k)}
+\newcommand{\xcorr}[2]{r_x(k,l) = \sum_{n=#1}^{#2}x(n-l)x^*(n-k)}
+\newcommand{\corr}[4]{\sum_{n=#1}^{#2}#3(n-l)#4^*(n-k)}
+
+\newcommand{\sqErr}[3]{\varepsilon_{#1} = \sum_{n=#2}^{#3}|e(n)|^2}
+
+\newcommand{\sumAp}{\sum_{k=1}^{p}a_p(k)}
+\newcommand{\sumApl}{\sum_{l=1}^{p}a_p(l)}
+\newcommand{\sumBq}{\sum_{k=0}^{q}b_q(k)}
+\newcommand{\sumBql}{\sum_{l=0}^{q}b_q(l)}
+
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+
+\newcommand{\Ap}{\begin{bmatrix}
+				   1\\  a_p(1) \\ a_p(2) \\ \vdots \\ a_p(p)
+				\end{bmatrix}}
+\newcommand{\ap}{\begin{bmatrix}
+				a_p(1) \\ a_p(2) \\ \vdots \\ a_p(p)
+				\end{bmatrix}}
+\newcommand{\bq}{\begin{bmatrix}
+				  b_q(0) \\ b_q(1) \\ b_q(2) \\ \vdots \\ b_q(q)
+				  \end{bmatrix}}
+
+
+\newcommand{\Rmat}{\begin{bmatrix}
+					r_x(0)	&	r_x^*(1)    &    r_x^*(2)     & \hdots       & r_x^*(p-1) \\
+					r_x(1)	&	r_x(0)       &    r_x^*(1)     & \hdots       & r_x^*(p-2) \\
+					r_x(2)	&	r_x(1)       &    r_x(0)        & \hdots       & r_x^*(p-3) \\
+					\vdots	&	\vdots       &    \vdots        & 	          & \vdots       \\
+					r_x^*(p-1)	&	r_x^*(p-2) &    r_x^*(p-3)  & \hdots       & r_x(0)       \\
+				   \end{bmatrix}}
+
+
+%%% specfic method matrix structure
+\newcommand{\prony}{\left[\begin{array}{ccccc}
+				   x(0)    &   0    &       0   & \hdots  & 0 \\
+				   x(1)    & x(0)  &       0  & \hdots  & 0 \\
+				   x(2)    & x(1)  &   x(0)  & \hdots  & 0 \\
+				   \vdots & \vdots  	  &  \vdots &  &  \vdots \\
+				   x(q)    & x(q-1)  &  \hdots & \hdots &  x(q-p) \\[6pt] \hdashline[2pt/2pt]
+				   x(q+1)    & x(q)  &  \hdots & \hdots &  x(q-p +1) \\
+   				   \vdots & \vdots  &           &  		& \vdots \\
+				   x(q+p)    & x(q+p-1)  &  \hdots & \hdots &  x(q)
+				\end{array}\right]}
+				
+\newcommand{\Xq}{\begin{bmatrix}
+				   x(0) &   0          &       0   & \hdots  & 0 \\
+				   x(1) & x(0)        &       0  & \hdots  & 0 \\
+				   x(2) & x(1)        &   x(0)  & \hdots  & 0 \\
+				   \vdots & \vdots &  \vdots &  &  \vdots \\
+				   x(q-1) & x(q-2)  &  \hdots & \hdots &  x(q-p) \\
+				   x(q+1) & x(q)  &  \hdots & \hdots &  x(q-p + 1)
+				\end{bmatrix}}
+
+\newcommand{\PadeNum}{\begin{bmatrix}
+				   x(0) &   0          &       0   & \hdots  & 0 \\
+				   x(1) & x(0)        &       0  & \hdots  & 0 \\
+				   x(2) & x(1)        &   x(0)  & \hdots  & 0 \\
+				   \vdots & \vdots &  \vdots &  &  \vdots \\
+				   x(q) & x(q-1)  &  \hdots & \hdots &  x(q-p)
+				\end{bmatrix}}
+\newcommand{\PadeDen}{\begin{bmatrix}
+				   x(q)     &     x(q-1)       & \hdots  & x(q-p+1) \\
+				   x(q+1) &     x(q)    	    &  \hdots  & x(q-p+2) \\
+				   \vdots  &     \vdots 	    &              & \vdots     \\
+				   x(q+p-1) & x(q+p-2)   & \hdots &  x(q)
+					\end{bmatrix}}
+
+
+\thispagestyle{empty}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
