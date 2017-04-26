@@ -31,6 +31,27 @@ Other observation models can also be formed by manipulating the Ungerboeck obser
 
 The Forney observation model follows from the Ungerboeck observation model by the motivation to whiten the correlated noise. This is the motivation because as the BER results will show, for the equalizers we studied the Ungerboeck model performs poorly due to the correlated noise. The pulse shape matched filter observation model is another model where instead of using a filter at the receiver matched to $h(t)$ the matched filter we choose is that for the pulse shape $g(t)$. Block diagrams summarizing the three observation models is shown below.
 % Observation models figure.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\columnwidth]{img/UOM.pdf}
+\caption{The Ungerboeck observation model.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\columnwidth]{img/FOM.pdf}
+\caption{The Forney observation model.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\columnwidth]{img/PSMFOM.pdf}
+\caption{The PSMFOM model.}
+\end{figure}
+
+With this formulation we can 
+
+\section{Equalizers and Results}
+The solution to removing the ISI from our sampled outputs is to design a filter that performs the inverse operation to the channel introducting ISI. This filter that compensates for the ISI is what we call an equalizer.
+
 
 \end{document}
 
