@@ -12,7 +12,25 @@ In this project, we were asked to explore the performance of the maximum likelih
 \section{Observation Models}
 Throughout this class, we have been studying various models for digital and wireless communications.  For example, we first examined a signal with additive white gaussian noise known as AWGN. We then examined and developed theory for correcting phase and timing errors in communication systems. In each case the model became increasingly more complex, however we did not include any other constraints on our system. In other words, we had assumed that we were using an ideal channel.
 
-In general, channels will not have an ideal frequency response. To allow for other constraints we abstract the channel into a linear time-invariant system as a lowpass equivalent to a bandpass process. By doing this, we now represent the channel as having an arbitrary frequency response $C(f)$ for a specified bandwidth, $W$. The response of this channel is zero outside this bandwidth. A side effect
+In general, channels will not have an ideal frequency response. Instead, the channel will have an arbitrary nonzero frequency response $C(f)$ for a specified bandwidth, $W$, and a zero response outside this bandwidth. When the channel is not ideal intersymbol interference (ISI) results. To analyze these non ideal channels and further examine intersymbol interference we abstract the channel into a linear time-invariant (LTI) system as a lowpass equivalent to a bandpass process. With an LTI system we can analytically characterize a system
+% Figure of abstracted model
+The received signal for a system operating at symbol period $T$ is then,
+\[ r_l(t) = \sum_{n=0}^{\infty} I_n h(t -nT) + z(t) \]
+where.
+\[h(t) =  g(t) * c(t) = \int_{-\infty}^{\infty} g(\tau)c(t-\tau)d\tau \]
+represents the input pulse or the response of the channel to the pulse shape and $z(t)$ is AWGN. The downsampled output at the matched filter of the receiver is
+\[ y(kT) = y_k = \sum_{n=0}^{\infty} I_n x(kt-nT) + v(kT)\]
+where $x(t)$ is the response of the filter at the receiver and when this filter is matched to $h(t)$ as $h^*(t)$ this can be expressed as
+\[x(t) = \int_{-\infty}^{\infty} h^*(t)h(t-\tau) d\tau. \]
+The samples $y(kT)$ can be simplified to show that the sampled outputs at the matched filter can also be represented as
+\[ y(kT) = I_k + \sum_{n=0, n \neq k}^{\infty} I_n x_{n-k} + v_{k}. \]
+In this expression $I_k$ is the desired transmitted symbol and the second term under summation is the manifestation of ISI in our sampled output sequence.
+From the former analysis we have generated a discrete-time model for the arbitrary channel that introduces ISI. This particular model is known as the Ungerboeck observation model.
+
+Other observation models can also be formed by manipulating the Ungerboeck observation model or representing the receiver chain in some other manner. These models are called observation models because if all we were able to observe were sampled outputs for a given input sequence of data symbols $\{Ik\}$, wether we express the receiver in terms of $g(t), c(t)$ and $h(t)$ or in terms of $x_n$ (as in the Ungerboeck observation model) we would not be able to determine which representation produced the samples. We have considered two other models in this class, the Forney observation model and the pulse shape matched filter observation model along with emphasis on how we would extend this idea to other observation models.
+
+The Forney observation model follows from the Ungerboeck observation model by the motivation to whiten the correlated noise. This is the motivation because as the BER results will show, for the equalizers we studied the Ungerboeck model performs poorly due to the correlated noise. The pulse shape matched filter observation model is another model where instead of using a filter at the receiver matched to $h(t)$ the matched filter we choose is that for the pulse shape $g(t)$. Block diagrams summarizing the three observation models is shown below.
+% Observation models figure.
 
 \end{document}
 
